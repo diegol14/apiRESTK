@@ -61,7 +61,11 @@ public class ComunidadAutonomaServiceImpl implements ComunidadAutonomaService {
         if (codigoCa == null || codigoCa.isBlank()) {
             throw new IllegalArgumentException("El código de la Comunidad no puede ser nulo ni estar vacío");
         }
+        if (!codigoCa.matches("[A-Za-z0-9]+")) {
+            throw new IllegalArgumentException("El código de la Comunidad contiene caracteres no válidos");
+        }
     }
+    
 
     private void ensureComunidadExists(String codigoCa) {
         if (!doesComunidadExist(codigoCa)) {

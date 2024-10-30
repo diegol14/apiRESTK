@@ -11,38 +11,41 @@ public class ProvinciaDTO {
     @NotNull
     @Min(1)  
     @Max(9999)  // Límite sugerido, no tenemos requisitos dados mas que los de DB
-    private Integer codigo_provincia;
+    private Integer codigoProvincia;
 
     @NotBlank
     @Size(max = 50)  // Límite sugerido, no tenemos requisitos dados mas que los de DB
-    private String nombre_provincia;
+    private String nombreProvincia;
 
     @NotBlank
     @Size(max = 10)  // Límite sugerido, no tenemos requisitos dados mas que los de DB
-    private String codigo_ca;
+    private String codigoCa;
 
-    public Integer getCodigo_provincia() {
-        return codigo_provincia;
-    }
+	public Integer getCodigoProvincia() {
+		return codigoProvincia;
+	}
 
-    public void setCodigo_provincia(Integer codigo_provincia) {
-        this.codigo_provincia = codigo_provincia;
-    }
+	public void setCodigoProvincia(Integer codigoProvincia) {
+		this.codigoProvincia = codigoProvincia;
+	}
 
-    public String getNombre_provincia() {
-        return nombre_provincia;
-    }
+	public String getNombreProvincia() {
+		return nombreProvincia;
+	}
 
-    public void setNombre_provincia(String nombre_provincia) {
-        this.nombre_provincia = nombre_provincia;
-    }
+	public void setNombreProvincia(String nombreProvincia) {
+		this.nombreProvincia = nombreProvincia;
+	}
 
-    public String getCodigo_ca() {
-        return codigo_ca;
-    }
+	public String getCodigoCa() {
+		return codigoCa;
+	}
 
-    public void setCodigo_ca(String codigo_ca) {
-        this.codigo_ca = codigo_ca;
-    }
+	public void setCodigoCa(String codigoCa) {
+		this.codigoCa = codigoCa;
+	}
+
+	
+       
 }
 

@@ -36,13 +36,13 @@ public class ProvinciaServiceImpl {
     }
 
     public Provincia create(ProvinciaDTO provinciaDTO) {
-        validateCodigoProvincia(provinciaDTO.getCodigo_provincia());
-        ComunidadAutonoma comunidadAutonoma = fetchComunidadByCodigoCa(provinciaDTO.getCodigo_ca());
-        checkProvinciaDoesNotExist(provinciaDTO.getCodigo_provincia());
+        validateCodigoProvincia(provinciaDTO.getCodigoProvincia());
+        ComunidadAutonoma comunidadAutonoma = fetchComunidadByCodigoCa(provinciaDTO.getCodigoCa());
+        checkProvinciaDoesNotExist(provinciaDTO.getCodigoProvincia());
 
         Provincia provincia = new Provincia();
-        provincia.setCodigoProvincia(provinciaDTO.getCodigo_provincia());
-        provincia.setNombre_provincia(provinciaDTO.getNombre_provincia());
+        provincia.setCodigoProvincia(provinciaDTO.getCodigoProvincia());
+        provincia.setNombre_provincia(provinciaDTO.getNombreProvincia());
         provincia.setComunidadAutonoma(comunidadAutonoma);
 
         return provinciaRepository.save(provincia);
@@ -50,7 +50,7 @@ public class ProvinciaServiceImpl {
 
     public Provincia update(Integer codigoProvincia, ProvinciaDTO provinciaModificadaDTO) {
         validateCodigoProvincia(codigoProvincia);
-        validateCodigoProvincia(provinciaModificadaDTO.getCodigo_provincia());
+        validateCodigoProvincia(provinciaModificadaDTO.getCodigoProvincia());
 
         Provincia existingProvincia = provinciaRepository.findById(codigoProvincia)
             .orElseThrow(() -> new CustomNotFoundException("Provincia con código " + codigoProvincia + " no encontrada"));
@@ -58,7 +58,7 @@ public class ProvinciaServiceImpl {
         checkComunidadNotChanged(existingProvincia, provinciaModificadaDTO);
 
         // Actualiza solo el nombre; la Comunidad Autónoma no se cambia
-        existingProvincia.setNombre_provincia(provinciaModificadaDTO.getNombre_provincia());
+        existingProvincia.setNombre_provincia(provinciaModificadaDTO.getNombreProvincia());
 
         return provinciaRepository.save(existingProvincia);
     }
@@ -98,8 +98,8 @@ public class ProvinciaServiceImpl {
     }
 
     private void checkComunidadNotChanged(Provincia existingProvincia, ProvinciaDTO provinciaModificadaDTO) {
-        if (provinciaModificadaDTO.getCodigo_ca() != null &&
-            !existingProvincia.getComunidadAutonoma().getCodigoCa().equals(provinciaModificadaDTO.getCodigo_ca())) {
+        if (provinciaModificadaDTO.getCodigoCa() != null &&
+            !existingProvincia.getComunidadAutonoma().getCodigoCa().equals(provinciaModificadaDTO.getCodigoCa())) {
             throw new IllegalUpdateException("No se permite actualizar el código de la comunidad autónoma");
         }
     }
