@@ -9,7 +9,7 @@ import es.kuiko.api_comunidades.model.ComunidadAutonoma;
 import java.util.List;
 
 @Repository
-public interface ComunidadRepository extends JpaRepository<ComunidadAutonoma, String> {
+public interface ComunidadAutonomaRepository extends JpaRepository<ComunidadAutonoma, String> {
 
 	Optional<ComunidadAutonoma> findByCodigoCa(String codigoCa);
 

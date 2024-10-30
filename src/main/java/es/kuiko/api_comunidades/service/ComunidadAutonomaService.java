@@ -8,11 +8,11 @@ public interface ComunidadAutonomaService {
 	
     List<ComunidadAutonoma> findAll();
     
-    Optional<ComunidadAutonoma> findById(Long id);
+    Optional<ComunidadAutonoma> findById(String codigoCa);
     
     ComunidadAutonoma create(ComunidadAutonoma comunidadAutonoma);
     
-    ComunidadAutonoma update(Long id, ComunidadAutonoma comunidadAutonoma);
+    ComunidadAutonoma update(String codigoCa, ComunidadAutonoma comunidadAutonoma);
     
-    void delete(Long id);
+    void delete(String codigoCa);  
 }
