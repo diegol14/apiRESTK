@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:comunidadesdb;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: false  # Ocultar SQL en producción
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: false  # Deshabilitar consola H2 en producción
+
+# Configuración específica para producción
+server:
+  port: 8080  # Puerto estándar para producción

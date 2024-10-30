@@ -1,0 +1,20 @@
+spring.application.name=api_comunidades
+
+spring.profiles.active=dev
+
+#Funcionamiento de las excepciones
+#spring.web.resources.add-mappings=false
+
+# Configuraci�n de la base de datos H2
+spring.datasource.url=jdbc:h2:mem:comunidadesdb;DB_CLOSE_ON_EXIT
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+# Mostrar SQL ejecutado por Hibernate en la consola
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+
+# Activar y configurar la consola H2
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-kuiko

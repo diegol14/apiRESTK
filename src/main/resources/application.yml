@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: api_comunidades
+  profiles:
+    active: dev  # Perfil predeterminado

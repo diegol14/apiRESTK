@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:comunidadesdb;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+      path: /h2-kuiko
+
+# Configuración específica para desarrollo
+server:
+  port: 8088  # Puerto en el que se ejecutará la aplicación
