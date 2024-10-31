@@ -43,11 +43,11 @@ public class Provincia {
 		this.codigoProvincia = codigoProvincia;
 	}
 
-	public String getNombre_provincia() {
+	public String getNombreProvincia() {
 		return nombreProvincia;
 	}
 
-	public void setNombre_provincia(String nombre_provincia) {
+	public void setNombreProvincia(String nombre_provincia) {
 		this.nombreProvincia = nombre_provincia;
 	}
 	

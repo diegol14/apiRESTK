@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import es.kuiko.api_comunidades.dto.ProvinciaDTO;
+import es.kuiko.api_comunidades.dto.ProvinciaInfoComunidadDTO;
 import es.kuiko.api_comunidades.exception.CustomNotFoundException;
 import es.kuiko.api_comunidades.exception.IllegalUpdateException;
 import es.kuiko.api_comunidades.model.Provincia;
@@ -34,7 +35,7 @@ public class ProvinciaServiceImpl {
         validateCodigoProvincia(codigoProvincia);
         return provinciaRepository.findById(codigoProvincia);
     }
-
+    
     public Provincia create(ProvinciaDTO provinciaDTO) {
         validateCodigoProvincia(provinciaDTO.getCodigoProvincia());
         ComunidadAutonoma comunidadAutonoma = fetchComunidadByCodigoCa(provinciaDTO.getCodigoCa());
@@ -42,7 +43,7 @@ public class ProvinciaServiceImpl {
 
         Provincia provincia = new Provincia();
         provincia.setCodigoProvincia(provinciaDTO.getCodigoProvincia());
-        provincia.setNombre_provincia(provinciaDTO.getNombreProvincia());
+        provincia.setNombreProvincia(provinciaDTO.getNombreProvincia());
         provincia.setComunidadAutonoma(comunidadAutonoma);
 
         return provinciaRepository.save(provincia);
@@ -58,7 +59,7 @@ public class ProvinciaServiceImpl {
         checkComunidadNotChanged(existingProvincia, provinciaModificadaDTO);
 
         // Actualiza solo el nombre; la Comunidad Autónoma no se cambia
-        existingProvincia.setNombre_provincia(provinciaModificadaDTO.getNombreProvincia());
+        existingProvincia.setNombreProvincia(provinciaModificadaDTO.getNombreProvincia());
 
         return provinciaRepository.save(existingProvincia);
     }
@@ -68,7 +69,7 @@ public class ProvinciaServiceImpl {
         ensureProvinciaExists(codigoProvincia);
         provinciaRepository.deleteById(codigoProvincia);
     }
-
+    
     // Métodos internos de validación para evitar duplicación (DRY)
     
     private void validateCodigoProvincia(Integer codigoProvincia) {
@@ -103,5 +104,8 @@ public class ProvinciaServiceImpl {
             throw new IllegalUpdateException("No se permite actualizar el código de la comunidad autónoma");
         }
     }
+
+
+
 }
 

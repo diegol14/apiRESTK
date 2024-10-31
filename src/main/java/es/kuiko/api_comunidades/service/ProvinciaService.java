@@ -8,11 +8,11 @@ public interface ProvinciaService {
 	
     List<Provincia> findAll();
     
-    Optional<Provincia> findById(int codigoProvincia);
+    Optional<Provincia> findById(Integer codigoProvincia);
     
     Provincia create(Provincia provincia);
     
-    Provincia update(int codigoProvincia, Provincia provincia);
+    Provincia update(Integer codigoProvincia, Provincia provincia);
     
-    void delete(int codigoProvincia);
+    void delete(Integer codigoProvincia);
 }

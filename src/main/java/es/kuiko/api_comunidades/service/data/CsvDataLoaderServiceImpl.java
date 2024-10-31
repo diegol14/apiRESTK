@@ -47,7 +47,7 @@ public class CsvDataLoaderServiceImpl implements DataLoaderService {
         try {
             Resource resource = resourceLoader.getResource(comunidadesCsvPath);
             if (!resource.exists()) {
-                throw new FileNotFoundException("Archivo COMUNIDAD_AUTONOMA.csv no encontrado.");
+                throw new FileNotFoundException("Archivo COMUNIDAD_AUTONOMA no encontrado.");
             }
             CSVParser parser = new CSVParserBuilder().withSeparator(',').build();
             try (InputStream inputStream = resource.getInputStream();
@@ -118,7 +118,7 @@ public class CsvDataLoaderServiceImpl implements DataLoaderService {
 
                         Provincia provincia = new Provincia();
                         provincia.setCodigoProvincia(codigoProvincia);
-                        provincia.setNombre_provincia(nombreProvincia);
+                        provincia.setNombreProvincia(nombreProvincia);
                         provincia.setComunidadAutonoma(comunidad);
 
                         provincias.add(provincia);
