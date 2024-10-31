@@ -12,6 +12,12 @@ spring:
     console:
       enabled: true
       path: /h2-kuiko
+      
+csv:
+  comunidades:
+    path: classpath:COMUNIDAD_AUTONOMA.csv
+  provincias:
+    path: classpath:PROVINCIA.csv
 
 # Configuración específica para desarrollo
 server:

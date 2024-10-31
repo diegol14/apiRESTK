@@ -11,6 +11,12 @@ spring:
   h2:
     console:
       enabled: false  # Deshabilitar consola H2 en producción
+      
+csv:
+  comunidades:
+    path: classpath:COMUNIDAD_AUTONOMA.csv
+  provincias:
+    path: classpath:PROVINCIA.csv
 
 # Configuración específica para producción
 server:
