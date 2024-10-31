@@ -44,8 +44,5 @@ public class ProvinciaDTO {
 	public void setCodigoCa(String codigoCa) {
 		this.codigoCa = codigoCa;
 	}
-
-	
-       
 }
 
