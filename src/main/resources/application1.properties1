@@ -1,5 +1,4 @@
 spring.application.name=api_comunidades
-
 spring.profiles.active=dev
 
 #Funcionamiento de las excepciones
