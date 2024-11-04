@@ -58,9 +58,14 @@ public class GlobalExceptionHandler {
 
     // Manejo de excepciones personalizadas de recurso no encontrado
     @ExceptionHandler(CustomNotFoundException.class)
-    public ResponseEntity<String> handleCustomNotFoundException(CustomNotFoundException ex) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    public ResponseEntity<Map<String, String>> handleCustomNotFoundException(CustomNotFoundException ex) {
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("error", "Recurso no encontrado");
+        errorResponse.put("detalles", ex.getMessage());  // Incluye el mensaje de error personalizado en el JSON
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
+
+
 
     // Manejo de argumentos inválidos generales
     @ExceptionHandler(IllegalArgumentException.class)

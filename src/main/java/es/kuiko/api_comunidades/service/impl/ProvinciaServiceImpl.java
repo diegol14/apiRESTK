@@ -42,6 +42,7 @@ public class ProvinciaServiceImpl implements ProvinciaService {
 	@Override
 	public Optional<ProvinciaInfoComunidadDTO> getProvinciaComunidadInfoById(Integer codigoProvincia) {
 		 validateCodigoProvincia(codigoProvincia);
+		 ensureProvinciaExists(codigoProvincia);
 		 Optional<Provincia> optionalProvincia = provinciaRepository.findProvinciaComunidadInfoById(codigoProvincia);
 	        return optionalProvincia.filter(provincia -> provincia.getComunidadAutonoma() != null)
 	        		.map(provincia -> new ProvinciaInfoComunidadDTO(

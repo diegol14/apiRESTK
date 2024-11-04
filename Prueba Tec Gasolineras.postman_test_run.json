@@ -1,0 +1,115 @@
+{
+	"id": "6373d8c4-7294-41c8-bdfb-445cc0ec11f0",
+	"name": "Prueba Tec Gasolineras",
+	"timestamp": "2024-11-05T11:07:57.852Z",
+	"collection_id": "32837664-c41a6523-a335-44d0-9015-b2a568afbee9",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 3,
+	"delay": "5",
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-11-05T11:07:56.047Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "f020c43e-6c18-42f8-b6b3-e2fd341fccf7",
+			"name": "Get gasolineras  ok",
+			"url": "https://postman-rest-api-learner.glitch.me//info?id=1",
+			"time": 591,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				591
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "c45d470c-37df-436d-93a7-af7b4af344e4",
+			"name": "Get gasolinera erronea con  ok",
+			"url": "https://postman-rest-api-learner.glitch.me//info?id=1",
+			"time": 194,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				194
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "a5129a35-2b95-43d6-9753-7394d151388e",
+			"name": "Get gasolinera erronea con  bad request",
+			"url": "https://postman-rest-api-learner.glitch.me//info?id=1",
+			"time": 194,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				194
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 979,
+	"collection": {
+		"requests": [
+			{
+				"id": "f020c43e-6c18-42f8-b6b3-e2fd341fccf7",
+				"method": "GET"
+			},
+			{
+				"id": "c45d470c-37df-436d-93a7-af7b4af344e4",
+				"method": "GET"
+			},
+			{
+				"id": "a5129a35-2b95-43d6-9753-7394d151388e",
+				"method": "GET"
+			}
+		]
+	}
+}
