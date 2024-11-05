@@ -20,10 +20,24 @@ public class GasolineraWrapperApiResponseIn {
     @JsonProperty("ResultadoConsulta")
     @Size(max = 20) // Suponiendo que el resultado sea una cadena corta como "OK" u otros posibles valores
     private String resultadoConsulta;
+    
 
     // Getters y setters
 
-    public String getFecha() {
+    public GasolineraWrapperApiResponseIn() {
+	}
+    
+
+	public GasolineraWrapperApiResponseIn( String fecha, List<GasolineraDTOin> listaEESSPrecio,
+			String nota,  String resultadoConsulta) {
+		this.fecha = fecha;
+		this.listaEESSPrecio = listaEESSPrecio;
+		this.nota = nota;
+		this.resultadoConsulta = resultadoConsulta;
+	}
+
+
+	public String getFecha() {
         return fecha;
     }
 

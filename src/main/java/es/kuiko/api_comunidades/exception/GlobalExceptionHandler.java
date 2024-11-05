@@ -70,7 +70,7 @@ public class GlobalExceptionHandler {
     // Manejo de argumentos inválidos generales
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleIllegalArgument(IllegalArgumentException ex) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Argumento inválido: " + ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body( ex.getMessage());
     }
 
     // Manejo de excepciones NullPointerException para recursos no encontrados

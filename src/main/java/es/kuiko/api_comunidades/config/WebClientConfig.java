@@ -2,6 +2,7 @@ package es.kuiko.api_comunidades.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -23,6 +24,7 @@ import java.security.cert.CertificateFactory;
 public class WebClientConfig {
 
     @Bean
+    @Primary
     public WebClient webClient() throws Exception {
         // Cargar el certificado de tu directorio resources/certs
         CertificateFactory cf = CertificateFactory.getInstance("X.509");

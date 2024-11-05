@@ -21,6 +21,19 @@ import jakarta.validation.constraints.Positive;
 @Table(name = "provincia")
 public class Provincia {
 
+	public Provincia() {
+	}
+
+	public Provincia(
+			Integer codigoProvincia,
+			String nombreProvincia,
+			ComunidadAutonoma comunidadAutonoma) {
+		this.codigoProvincia = codigoProvincia;
+		this.nombreProvincia = nombreProvincia;
+		this.comunidadAutonoma = comunidadAutonoma;
+	}
+
+
 	@Id
     @NotNull(message = "El código de la provincia no puede ser nulo")
 	@Positive(message = "El código de la provincia tiene que ser mayor de cero")

@@ -1,6 +1,7 @@
 package es.kuiko.api_comunidades.service.impl;
 
 import es.kuiko.api_comunidades.dto.ComunidadAutonomaCountProvinciasDTO;
+import es.kuiko.api_comunidades.exception.CustomNotFoundException;
 import es.kuiko.api_comunidades.model.ComunidadAutonoma;
 import es.kuiko.api_comunidades.repository.ComunidadAutonomaRepository;
 import es.kuiko.api_comunidades.repository.ProvinciaRepository;
@@ -85,7 +86,7 @@ public class ComunidadAutonomaServiceImpl implements ComunidadAutonomaService {
     
     private void ensureComunidadExists(String codigoCa) {
         if (!doesComunidadExist(codigoCa)) {
-            throw new RuntimeException("Comunidad Autónoma no encontrada");
+            throw new CustomNotFoundException("Comunidad Autónoma no encontrada");
         }
     }
 

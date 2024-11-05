@@ -23,10 +23,21 @@ public class GasolineraWrapperApiResponseOut {
 
     @JsonProperty("ResultadoConsulta")
     private String resultadoConsulta;
+    
 
-    // Getters y setters
+    public GasolineraWrapperApiResponseOut() {
+	}
 
-    public String getFecha() {
+ public GasolineraWrapperApiResponseOut(String fecha, List<GasolineraDTOout> listaEESSPrecio, String nota,
+			String resultadoConsulta) {
+		this.fecha = fecha;
+		this.listaEESSPrecio = listaEESSPrecio;
+		this.nota = nota;
+		this.resultadoConsulta = resultadoConsulta;
+	}
+
+	// Getters y setters
+	public String getFecha() {
         return fecha;
     }
 

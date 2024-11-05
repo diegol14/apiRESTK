@@ -13,38 +13,53 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name="comunidad_autonoma")
+@Table(name = "comunidad_autonoma")
 public class ComunidadAutonoma {
 	
+	public ComunidadAutonoma() {
+	}
+
+	public ComunidadAutonoma(
+			 String codigoCa,
+			 String nombreCa) {
+		this.codigoCa = codigoCa;
+		this.nombreCa = nombreCa;
+	}
+
 	@Id
-    @NotNull(message = "El código de la comunidad no puede ser nulo")
-    @NotBlank(message = "El código de la comunidad no puede estar vacío")
+	@NotNull(message = "El código de la comunidad no puede ser nulo")
+	@NotBlank(message = "El código de la comunidad no puede estar vacío")
 	@Column(name = "codigo_ca")
 	private String codigoCa;
-	
-    @NotNull(message = "El nombre de la comunidad no puede ser nulo")
-    @NotBlank(message = "El nombre de la comunidad no puede estar vacío")
+
+	@NotNull(message = "El nombre de la comunidad no puede ser nulo")
+	@NotBlank(message = "El nombre de la comunidad no puede estar vacío")
 	private String nombreCa;
-    
-    @OneToMany(mappedBy = "comunidadAutonoma")
-    @JsonManagedReference // Añadido para evitar recursión infinita
-    private List<Provincia> provincias;
-	
+
+	@OneToMany(mappedBy = "comunidadAutonoma")
+	@JsonManagedReference // Añadido para evitar recursión infinita
+	private List<Provincia> provincias;
+
 	public String getCodigoCa() {
 		return codigoCa;
 	}
+
 	public void setCodigoCa(String codigo_ca) {
 		this.codigoCa = codigo_ca;
 	}
+
 	public String getNombreCa() {
 		return nombreCa;
 	}
+
 	public void setNombreCa(String nombreCa) {
 		this.nombreCa = nombreCa;
 	}
+
 	public List<Provincia> getProvincias() {
 		return provincias;
 	}
+
 	public void setProvincias(List<Provincia> provincias) {
 		this.provincias = provincias;
 	}

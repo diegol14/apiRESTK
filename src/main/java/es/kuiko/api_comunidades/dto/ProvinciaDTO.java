@@ -8,7 +8,22 @@ import jakarta.validation.constraints.Max;
 
 public class ProvinciaDTO {
 
-    @NotNull
+    public ProvinciaDTO() {
+			}
+    
+    
+
+	public ProvinciaDTO(@NotNull @Min(1) @Max(9999) Integer codigoProvincia,
+			@NotBlank @Size(max = 50) String nombreProvincia, @NotBlank @Size(max = 10) String codigoCa) {
+		super();
+		this.codigoProvincia = codigoProvincia;
+		this.nombreProvincia = nombreProvincia;
+		this.codigoCa = codigoCa;
+	}
+
+
+
+	@NotNull
     @Min(1)  
     @Max(9999)  // Límite sugerido, no tenemos requisitos dados mas que los de DB
     private Integer codigoProvincia;
