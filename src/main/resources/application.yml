@@ -3,3 +3,36 @@ spring:
     name: api_comunidades
   profiles:
     active: dev  # Perfil predeterminado
+#Ruta de la api para obtener gasolineras
+api:
+     base-url: "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroProvincia/"  # URL base de la API de precios de carburantes.
+
+#Prevenir ataques DDoS    
+resilience4j:
+  ratelimiter:
+    instances:
+      apiLimiter:
+        limitForPeriod: 500  # Número de peticiones permitidas
+        limitRefreshPeriod: 1m  # Periodo de tiempo de refresco (cada minuto)
+        timeoutDuration: 0  # Tiempo de espera si el límite de tasa se excede (0 significa que se rechaza la solicitud inmediatamente)
+
+  circuitbreaker:
+    instances:
+      thirdPartyApiCircuitBreaker:
+        slidingWindowSize: 10  # Ventana de 10 solicitudes para evaluar la tasa de fallos
+        failureRateThreshold: 50  # Umbral del 50% de fallos para activar el cortocircuito
+        waitDurationInOpenState: 30s  # Tiempo que espera antes de intentar volver a la normalidad
+        permittedNumberOfCallsInHalfOpenState: 3  # Llamadas permitidas en estado semiabierto
+        minimumNumberOfCalls: 5  # Mínimo de llamadas para evaluar la tasa de fallos
+        automaticTransitionFromOpenToHalfOpenEnabled: true  # Permite transiciones automáticas
+
+  timelimiter:
+    instances:
+      thirdPartyApiTimeout:
+        timeoutDuration: 2s  # Límite de espera de 2 segundos por solicitud
+
+  retry:
+    instances:
+      thirdPartyApiRetry:
+        maxAttempts: 3  # Reintentos máximos en caso de fallo
+        waitDuration: 500ms  # Tiempo de espera entre reintentos

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especificación OpenAPI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="orange-bar"></div>
+            <h1>Especificación OpenAPI</h1>
+        </header>
+        
+        <div class="file-preview">
+<pre>
+	openapi: 3.0.1
+	info:
+	  title: OpenAPI definition
+	  version: v0
+	servers:
+	- url: http://localhost:8088
+	  description: Generated server url
+	tags:
+	- name: Gasolineras
+	  description: Operaciones relacionadas con la información de gasolineras
+	- name: Comunidades Autónomas
+	  description: Operaciones sobre Comunidades Autónomas
+	- name: Provincias
+	  description: Operaciones relacionadas con las Provincias
+	paths:
+	  /api-kuiko/provincias/{codigoProvincia}:
+	    get:
+	      tags:
+	      - Provincias
+	      summary: Obtener una provincia por código
+	      description: Devuelve los detalles de la provincia que coincide con el código
+	        especificado.
+	      operationId: getByCodigo
+	      parameters:
+	      - name: codigoProvincia
+	        in: path
+	        required: true
+	        schema:
+	          type: integer
+	          format: int32
+	      responses:
+	        "200":
+	          description: OK
+	          content:
+	            '*/*':
+	              schema:
+	                type: object
+	    put:
+	      tags:
+	      - Provincias
+	      summary: Actualizar una provincia existente
+	      description: Actualiza los detalles de una provincia usando su código.
+	      operationId: update
+	      parameters:
+	      - name: codigoProvincia
+	        in: path
+	        required: true
+	        schema:
+	          type: integer
+	          format: int32
+	      requestBody:
+	        content:
+	          application/json:
+	            schema:
+	              $ref: "#/components/schemas/ProvinciaDTO"
+	        required: true
+	      responses:
+	        "200":
+	          description: OK
+	          content:
+	            '*/*':
+	              schema:
+	                type: object
+	    delete:
+	      tags:
+	      - Provincias
+	      summary: Eliminar una provincia
+	      description: Elimina la provincia especificada por su código.
+	      operationId: delete
+	      parameters:
+	      - name: codigoProvincia
+	        in: path
+	        required: true
+	        schema:
+	          type: integer
+	          format: int32
+	      responses:
+	        "200":
+	          description: OK
+	          content:
+	            '*/*':
+	              schema:
+	                type: object
+	  /api-kuiko/comunidades-autonomas/{caCode}:
+	    get:
+	      tags:
+	      - Comunidades Autónomas
+	      summary: Obtener una Comunidad Autónoma por código
+	      description: Devuelve los detalles de la Comunidad Autónoma que coincide con
+	        el código especificado.
+	      operationId: getByCode
+	      parameters:
+	      - name: caCode
+	        in: path
+	        required: true
+	        schema:
+	          type: string
+	      responses:
+	        "200":
+	          description: OK
+	          content:
+	            '*/*':
+	              schema:
+	                type: object
+	    put:
+	      tags:
+	      - Comunidades Autónomas
+	      summary: Actualizar una Comunidad Autónoma existente
+	      description: Actualiza los detalles de una Comunidad Autónoma usando su código.
+	      operationId: update_1
+	      parameters:
+	      - name: caCode
+	        in: path
+	        required: true
+	        schema:
+	          type: string
+	      requestBody:
+	        content:
+	          application/json:
+	            schema:
+	              $ref: "#/components/schemas/ComunidadAutonoma"
+	        required: true
+	      responses:
+	        "200":
+	          description: OK
+	          content:
+	            '*/*':
+	              schema:
+	                type: object
+	    delete:
+	      tags:
+	      - Comunidades Autónomas
+	      summary: Eliminar una Comunidad Autónoma
+	      description: Elimina la Comunidad Autónoma especificada por su código.
+	      operationId: delete_1
+	      parameters:
+	      - name: caCode
+	        in: path
+	        required: true
+	        schema:
+	          type: string
+	      responses:
+	        "200":
+	          description: OK
+	          content:
+	            '*/*':
+	              schema:
+	                type: object
+	  /api-kuiko/provincias/:
+	    get:
+	      tags:
+	      - Provincias
+	      summary: Obtener todas las provincias
+	      description: Devuelve una lista de todas las provincias registradas.
+	      operationId: getAll
+	      responses:
+	        "200":
+	          description: OK
+	          content:
+	            '*/*':
+	              schema:
+	                type: array
+	                items:
+	                  $ref: "#/components/schemas/Provincia"
+	    post:
+	      tags:
+	      - Provincias
+	      summary: Crear una nueva provincia
+	      description: Permite registrar una nueva provincia en el sistema.
+	      operationId: create
+	      requestBody:
+	        content:
+	          application/json:
+	            schema:
+	              $ref: "#/components/schemas/ProvinciaDTO"
+	        required: true
+	      responses:
+	        "200":
+	          description: OK
+	          content:
+	            '*/*':
+	              schema:
+	                type: object
+	  /api-kuiko/comunidades-autonomas/:
+	    get:
+	      tags:
+	      - Comunidades Autónomas
+	      summary: Obtener todas las Comunidades Autónomas
+	      description: Devuelve una lista de todas las Comunidades Autónomas registradas.
+	      operationId: getAll_1
+	      responses:
+	        "200":
+	          description: OK
+	          content:
+	            '*/*':
+	              schema:
+	                type: array
+	                items:
+	                  $ref: "#/components/schemas/ComunidadAutonoma"
+	    post:
+	      tags:
+	      - Comunidades Autónomas
+	      summary: Crear una nueva Comunidad Autónoma
+	      description: Permite registrar una nueva Comunidad Autónoma en el sistema.
+	      operationId: create_1
+	      requestBody:
+	        content:
+	          application/json:
+	            schema:
+	              $ref: "#/components/schemas/ComunidadAutonoma"
+	        required: true
+	      responses:
+	        "200":
+	          description: OK
+	          content:
+	            '*/*':
+	              schema:
+	                type: object
+	  /api-kuiko/provincias/{codigoProvincia}/detalles-comunidad:
+	    get:
+	      tags:
+	      - Provincias
+	      summary: Obtener detalles de una provincia y su comunidad autónoma
+	      description: "Devuelve información adicional sobre la provincia especificada,\
+	        \ incluyendo el nombre y código de la comunidad autónoma."
+	      operationId: findProvinciaComunidadInfo
+	      parameters:
+	      - name: codigoProvincia
+	        in: path
+	        required: true
+	        schema:
+	          type: integer
+	          format: int32
+	      responses:
+	        "200":
+	          description: OK
+	          content:
+	            '*/*':
+	              schema:
+	                type: object
+	  /api-kuiko/gasolineras/{provinceCode}:
+	    get:
+	      tags:
+	      - Gasolineras
+	      summary: Obtener gasolineras por provincia
+	      description: Devuelve una lista de gasolineras para la provincia especificada
+	        mediante su código.
+	      operationId: getGasolinerasPorProvincia
+	      parameters:
+	      - name: provinceCode
+	        in: path
+	        required: true
+	        schema:
+	          type: string
+	      responses:
+	        "200":
+	          description: OK
+	          content:
+	            '*/*':
+	              schema:
+	                $ref: "#/components/schemas/GasolineraWrapperApiResponseOut"
+	  /api-kuiko/comunidades-autonomas/{codigoCa}/cantidad-provincias:
+	    get:
+	      tags:
+	      - Comunidades Autónomas
+	      summary: Obtener la cantidad de provincias de una Comunidad Autónoma
+	      description: Devuelve el número de provincias asociadas a la Comunidad Autónoma
+	        especificada.
+	      operationId: getCantidadProvincias
+	      parameters:
+	      - name: codigoCa
+	        in: path
+	        required: true
+	        schema:
+	          type: string
+	      responses:
+	        "200":
+	          description: OK
+	          content:
+	            '*/*':
+	              schema:
+	                $ref: "#/components/schemas/ComunidadAutonomaCountProvinciasDTO"
+	components:
+	  schemas:
+	    ProvinciaDTO:
+	      required:
+	      - codigoCa
+	      - codigoProvincia
+	      - nombreProvincia
+	      type: object
+	      properties:
+	        codigoProvincia:
+	          maximum: 9999
+	          minimum: 1
+	          type: integer
+	          format: int32
+	        nombreProvincia:
+	          maxLength: 50
+	          minLength: 0
+	          type: string
+	        codigoCa:
+	          maxLength: 10
+	          minLength: 0
+	          type: string
+	    ComunidadAutonoma:
+	      required:
+	      - codigoCa
+	      - nombreCa
+	      type: object
+	      properties:
+	        codigoCa:
+	          type: string
+	        nombreCa:
+	          type: string
+	        provincias:
+	          type: array
+	          items:
+	            $ref: "#/components/schemas/Provincia"
+	    Provincia:
+	      required:
+	      - codigoProvincia
+	      - nombreProvincia
+	      type: object
+	      properties:
+	        codigoProvincia:
+	          type: integer
+	          format: int32
+	        nombreProvincia:
+	          type: string
+	        comunidadAutonoma:
+	          $ref: "#/components/schemas/ComunidadAutonoma"
+	    GasolineraDTOout:
+	      type: object
+	      properties:
+	        Rótulo:
+	          type: string
+	        Dirección:
+	          type: string
+	        Horario:
+	          type: string
+	        Localidad:
+	          type: string
+	        Municipio:
+	          type: string
+	        Provincia:
+	          type: string
+	        IDProvincia:
+	          type: string
+	        Latitud:
+	          type: string
+	        Longitud (WGS84):
+	          type: string
+	        Precio Gasoleo A:
+	          type: string
+	        Precio GNC:
+	          type: string
+	        Precio GLP:
+	          type: string
+	        Precio Gasolina 95:
+	          type: string
+	        Precio Gasolina 98:
+	          type: string
+	    GasolineraWrapperApiResponseOut:
+	      type: object
+	      properties:
+	        Fecha:
+	          type: string
+	        ListaEESSPrecio:
+	          type: array
+	          items:
+	            $ref: "#/components/schemas/GasolineraDTOout"
+	        Nota:
+	          type: string
+	        ResultadoConsulta:
+	          type: string
+	    ComunidadAutonomaCountProvinciasDTO:
+	      required:
+	      - cantidadProvinciaInComunidad
+	      - codigoCa
+	      - nombreCa
+	      type: object
+	      properties:
+	        codigoCa:
+	          maxLength: 10
+	          minLength: 0
+	          type: string
+	        nombreCa:
+	          maxLength: 50
+	          minLength: 0
+	          type: string
+	        cantidadProvinciaInComunidad:
+	          maximum: 9999
+	          minimum: 1
+	          type: integer
+	          format: int32
+
+</pre>
+        </div>
+    </div>
+</body>
+</html>

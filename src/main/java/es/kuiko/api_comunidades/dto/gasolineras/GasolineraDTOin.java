@@ -3,79 +3,137 @@ package es.kuiko.api_comunidades.dto.gasolineras;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import jakarta.validation.constraints.Size;
 
+/**
+ * DTO para representar la información detallada de una gasolinera,
+ * incluyendo datos de ubicación, horario y precios de diferentes tipos de combustibles.
+ * Este DTO es utilizado para la respuesta de la API de gasolineras.
+ */
+@JsonPropertyOrder({
+    "Fecha",
+    "ListaEESSPrecio",
+    "Nota",
+    "ResultadoConsulta"
+})
 public class GasolineraDTOin {
 
-	@JsonProperty("Rótulo")
+    /**
+     * Nombre de la gasolinera.
+     */
+    @JsonProperty("Rótulo")
     @Size(max = 100)
     private String rotulo;
-	
-	@JsonProperty("Dirección")
+    
+    /**
+     * Dirección de la gasolinera.
+     */
+    @JsonProperty("Dirección")
     @Size(max = 100)
     private String direccion;
 
+    /**
+     * Horario de apertura de la gasolinera.
+     */
     @JsonProperty("Horario")
     @Size(max = 50)
     private String horario;
 
+    /**
+     * Localidad donde se encuentra la gasolinera.
+     */
     @JsonProperty("Localidad")
     @Size(max = 50)
     private String localidad;
 
+    /**
+     * Municipio donde se encuentra la gasolinera.
+     */
     @JsonProperty("Municipio")
     @Size(max = 50)
     private String municipio;
 
+    /**
+     * Provincia donde se encuentra la gasolinera.
+     */
     @JsonProperty("Provincia")
     @Size(max = 50)
     private String provincia;
 
+    /**
+     * Identificador de la provincia.
+     */
     @JsonProperty("IDProvincia")
     @Size(max = 4)
     private String idProvincia;
 
+    /**
+     * Latitud de la ubicación de la gasolinera.
+     */
     @JsonProperty("Latitud")
     @Size(max = 20)
     private String latitud;
 
+    /**
+     * Longitud de la ubicación de la gasolinera.
+     */
     @JsonProperty("Longitud (WGS84)")
     @Size(max = 20)
     private String longitud;
 
+    /**
+     * Precio del Gas Natural Comprimido (GNC).
+     */
     @JsonAlias("Precio Gas Natural Comprimido")
     private String precioGNC;
 
+    /**
+     * Precio de los Gases Licuados del Petróleo (GLP).
+     */
     @JsonAlias("Precio Gases licuados del petróleo")
     private String precioGLP;
 
+    /**
+     * Precio del Gasóleo A.
+     */
     @JsonAlias("Precio Gasoleo A")
     private String precioGasoleoA;
 
+    /**
+     * Precio de la Gasolina 95 E5.
+     */
     @JsonProperty("Precio Gasolina 95 E5")
     private String precioGasolina95E5;
 
+    /**
+     * Precio de la Gasolina 95 E10.
+     */
     @JsonProperty("Precio Gasolina 95 E10")
     private String precioGasolina95E10;
 
+    /**
+     * Precio de la Gasolina 98 E5.
+     */
     @JsonProperty("Precio Gasolina 98 E5")
     private String precioGasolina98E5;
 
+    /**
+     * Precio de la Gasolina 98 E10.
+     */
     @JsonProperty("Precio Gasolina 98 E10")
     private String precioGasolina98E10;
 
     // Getters y setters de todas las propiedades
 
     public String getRotulo() {
-		return rotulo;
-	}
+        return rotulo;
+    }
 
-	public void setRotulo(String rotulo) {
-		this.rotulo = rotulo;
-	}
+    public void setRotulo(String rotulo) {
+        this.rotulo = rotulo;
+    }
 
-	public String getDireccion() {
+    public String getDireccion() {
         return direccion;
     }
 
@@ -195,4 +253,3 @@ public class GasolineraDTOin {
         this.precioGasolina98E10 = precioGasolina98E10;
     }
 }
-

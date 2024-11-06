@@ -1,0 +1,14 @@
+es.kuiko.api_comunidades
+es.kuiko.api_comunidades.config
+es.kuiko.api_comunidades.controller
+es.kuiko.api_comunidades.dto
+es.kuiko.api_comunidades.dto.gasolineras
+es.kuiko.api_comunidades.exception
+es.kuiko.api_comunidades.mapper
+es.kuiko.api_comunidades.model
+es.kuiko.api_comunidades.repository
+es.kuiko.api_comunidades.service
+es.kuiko.api_comunidades.service.data
+es.kuiko.api_comunidades.service.database
+es.kuiko.api_comunidades.service.impl
+es.kuiko.api_comunidades.service.init

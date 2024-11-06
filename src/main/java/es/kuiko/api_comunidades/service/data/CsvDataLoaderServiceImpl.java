@@ -7,8 +7,6 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import com.opencsv.exceptions.CsvException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -22,6 +20,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * Servicio de carga de datos desde archivos CSV para las entidades {@link ComunidadAutonoma} y {@link Provincia}.
+ * 
+ * <p>La clase {@code CsvDataLoaderServiceImpl} implementa {@link DataLoaderService} y se encarga de leer datos 
+ * desde archivos CSV, mapeándolos a entidades de la aplicación. Proporciona métodos para cargar listas de 
+ * Comunidades Autónomas y Provincias con validación de datos y manejo de errores.
+ * </p>
+ * 
+ * <p>Los archivos CSV se especifican mediante las propiedades de configuración {@code csv.comunidades.path}
+ * y {@code csv.provincias.path}, y se leen con {@link ResourceLoader} para soportar diferentes rutas de recursos.
+ * </p>
+ */
 @Service
 public class CsvDataLoaderServiceImpl implements DataLoaderService {
 
@@ -30,16 +40,32 @@ public class CsvDataLoaderServiceImpl implements DataLoaderService {
 
     @Value("${csv.provincias.path}")
     private String provinciasCsvPath;
-	
-	private final ResourceLoader resourceLoader;
+
+    private final ResourceLoader resourceLoader;
     private final ComunidadAutonomaRepository comunidadAutonomaRepository;
 
-
+    /**
+     * Constructor para inyectar dependencias de {@link ResourceLoader} y {@link ComunidadAutonomaRepository}.
+     *
+     * @param resourceLoader Servicio para cargar recursos desde el sistema de archivos.
+     * @param comunidadAutonomaRepository Repositorio para verificar la existencia de Comunidades Autónomas.
+     */
     public CsvDataLoaderServiceImpl(ResourceLoader resourceLoader, ComunidadAutonomaRepository comunidadAutonomaRepository) {
         this.resourceLoader = resourceLoader;
         this.comunidadAutonomaRepository = comunidadAutonomaRepository;
     }
 
+    /**
+     * Carga los datos de Comunidades Autónomas desde un archivo CSV y los convierte a entidades.
+     *
+     * <p>Este método lee el archivo CSV especificado en {@code comunidadesCsvPath}, valida que cada registro 
+     * tenga un código y nombre de comunidad, y guarda las entidades en una lista. Cualquier error de validación
+     * en una fila se registra y se continúa con el siguiente registro.
+     * </p>
+     *
+     * @param comunidadesCsvPath Ruta del archivo CSV de Comunidades Autónomas.
+     * @return Lista de entidades {@link ComunidadAutonoma} cargadas desde el archivo.
+     */
     @Override
     public List<ComunidadAutonoma> loadComunidades(String comunidadesCsvPath) {
         List<ComunidadAutonoma> comunidadesAutonomas = new ArrayList<>();
@@ -88,6 +114,17 @@ public class CsvDataLoaderServiceImpl implements DataLoaderService {
         return comunidadesAutonomas;
     }
 
+    /**
+     * Carga los datos de Provincias desde un archivo CSV y los convierte a entidades.
+     *
+     * <p>Este método lee el archivo CSV especificado en {@code provinciasCsvPath}, valida que cada registro 
+     * tenga un código de provincia válido, y asocia cada provincia con una Comunidad Autónoma. Los errores 
+     * en los registros se manejan y se muestran en la consola.
+     * </p>
+     *
+     * @param provinciasCsvPath Ruta del archivo CSV de Provincias.
+     * @return Lista de entidades {@link Provincia} cargadas desde el archivo.
+     */
     @Override
     public List<Provincia> loadProvincias(String provinciasCsvPath) {
         List<Provincia> provincias = new ArrayList<>();

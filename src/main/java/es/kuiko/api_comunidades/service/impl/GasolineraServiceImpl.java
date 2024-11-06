@@ -4,6 +4,10 @@ import es.kuiko.api_comunidades.dto.gasolineras.*;
 import es.kuiko.api_comunidades.exception.CustomNotFoundException;
 import es.kuiko.api_comunidades.mapper.GasolineraMapper;
 import es.kuiko.api_comunidades.service.GasolineraService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
+import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 
 import java.util.Collections;
 import java.util.List;
@@ -27,6 +31,11 @@ public class GasolineraServiceImpl implements GasolineraService {
     }
 
     @Override
+    @CircuitBreaker(name = "thirdPartyApiCircuitBreaker", fallbackMethod = "fallbackResponse")
+    @Retry(name = "thirdPartyApiRetry")
+    @TimeLimiter(name = "thirdPartyApiTimeout")
+    @RateLimiter(name = "apiLimiter", fallbackMethod = "rateLimitFallback")
+
     public Mono<GasolineraWrapperApiResponseOut> getGasolinerasPorProvincia(String codigoProvincia) {
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder.path(codigoProvincia).build())  // Construye la URI con el código de provincia

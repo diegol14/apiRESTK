@@ -1,24 +1,28 @@
+# Archivo de configuración específico para el entorno de desarrollo.
+# Contiene configuraciones para la base de datos H2 en memoria, opciones de JPA y ruta de archivos CSV.
+
 spring:
   datasource:
-    url: jdbc:h2:mem:comunidadesdb;DB_CLOSE_ON_EXIT=FALSE
-    username: sa
-    password:
+    url: jdbc:h2:mem:comunidadesdb;DB_CLOSE_ON_EXIT=FALSE  # URL de la base de datos en memoria H2.
+    username: sa  # Nombre de usuario de la base de datos H2.
+    password:  # Contraseña de la base de datos (vacía en desarrollo).
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect  # Dialecto de H2 para JPA.
+    show-sql: true  # Muestra las consultas SQL en la consola para depuración.
     hibernate:
-      ddl-auto: update
+      ddl-auto: update  # Actualiza automáticamente el esquema de la base de datos.
   h2:
     console:
-      enabled: true
-      path: /h2-kuiko
-      
+      enabled: true  # Habilita la consola H2 en desarrollo.
+      path: /h2-kuiko  # Ruta de acceso a la consola H2.
+
+# Configuración de rutas de archivos CSV para inicializar datos de comunidades y provincias.
 csv:
   comunidades:
-    path: classpath:COMUNIDAD_AUTONOMA.csv
+    path: classpath:COMUNIDAD_AUTONOMA.csv  # Ruta del archivo CSV de comunidades autónomas.
   provincias:
-    path: classpath:PROVINCIA.csv
+    path: classpath:PROVINCIA.csv  # Ruta del archivo CSV de provincias.
 
-# Configuración específica para desarrollo
+# Configuración del servidor para desarrollo.
 server:
-  port: 8088  # Puerto en el que se ejecutará la aplicación
+  port: 8088  # Puerto en el que se ejecutará la aplicación en desarrollo.

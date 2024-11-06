@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación de la Prueba Técnica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="orange-bar"></div>
+            <h1>Documentación de la Prueba Técnica </h1>
+        </header>
+        
+        <p>Bienvenido a la documentación de la API desarrollada para la prueba técnica . Aquí encontrarás enlaces a la documentación técnica generada y al esquema OpenAPI.</p>
+        
+        <ul>
+            <li><a href="apidocs/index.html">JavaDocs</a> - Documentación detallada de la API en Java.</li>
+            <li><a href="openapi.html">OpenAPI</a> - Especificación de la API en formato YAML (Ver más).</li>
+            <li><a href="test-results.html">Resultados de las Pruebas</a> - Resultados de pruebas realizadas en Postman (Ver más).</li>
+        </ul>
+		<div class="note">
+		           <p>Las colecciones de Postman para pruebas de la API están disponibles en el repositorio. Puedes descargarlas desde la carpeta raíz del proyecto.</p>
+		       </div>
+        
+        <h2>Vista Previa del OpenAPI (YAML)</h2>
+        <div class="file-preview">
+    <pre>
+		servers:
+		- url: http://localhost:8088
+		description: Generated server url
+		tags:
+		- name: Gasolineras
+		description: Operaciones relacionadas con la información de gasolineras
+		- name: Comunidades Autónomas
+		description: Operaciones sobre Comunidades Autónomas
+		- name: Provincias
+		description: Operaciones relacionadas con las Provincias
+
+     </pre>
+        </div>
+
+        <h2>Vista Previa de los Resultados de las Pruebas (JSON)</h2>
+        <div class="file-preview">
+            <pre>
+{
+  "testResults": [
+    {
+      "testName": "Gasolineras - Prueba GET",
+      "status": "passed"
+    },
+    {
+      "testName": "Comunidades Autónomas - Prueba POST",
+      "status": "passed"
+    }
+  ]
+}
+            </pre>
+        </div>
+
+       
+    </div>
+</body>
+</html>
+ml>
