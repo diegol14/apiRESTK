@@ -1,5 +1,5 @@
 
-# API REST para la Prueba Técnica K
+# API REST para K
 
 Este proyecto es una API REST desarrollada como parte de una prueba técnica para **K**. La API proporciona información sobre **Comunidades Autónomas**, **Provincias** y **Gasolineras**, conectándose a una API de terceros para obtener datos actualizados de estaciones de servicio.
 
